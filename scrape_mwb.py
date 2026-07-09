@@ -22,6 +22,7 @@ import argparse
 import json
 import re
 import sys
+import time
 from datetime import date, datetime, timezone
 from zoneinfo import ZoneInfo
 
@@ -33,7 +34,12 @@ HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
         "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-    )
+    ),
+    "Accept": (
+        "text/html,application/xhtml+xml,application/xml;q=0.9,"
+        "image/webp,*/*;q=0.8"
+    ),
+    "Accept-Language": "en-US,en;q=0.9",
 }
 
 SECTION_KEYWORDS = {
@@ -56,11 +62,25 @@ SONG_INLINE_RE = re.compile(r"song\s+(\d+)", re.IGNORECASE)
 MAX_DETAIL_CHARS = 100
 
 
-def fetch_week_html(target_date: date) -> str:
+def fetch_week_html(target_date: date, attempts: int = 4) -> str:
     url = f"{WOL_BASE}/{target_date.year}/{target_date.month}/{target_date.day}"
-    resp = requests.get(url, headers=HEADERS, timeout=20)
-    resp.raise_for_status()
-    return resp.text
+    last_exc = None
+    for i in range(attempts):
+        try:
+            resp = requests.get(url, headers=HEADERS, timeout=45)
+            resp.raise_for_status()
+            return resp.text
+        except requests.RequestException as exc:
+            last_exc = exc
+            if i < attempts - 1:
+                wait = 5 * (i + 1)
+                print(
+                    f"Request failed ({exc}); retrying in {wait}s "
+                    f"({i + 1}/{attempts})...",
+                    file=sys.stderr,
+                )
+                time.sleep(wait)
+    raise last_exc
 
 
 def clean_text(text: str) -> str:
