@@ -1,0 +1,24 @@
+<style>
+  .mwb-q { font-family: inherit; color: #000; text-align: center; }
+  .mwb-q .mwb-week { font-size: 16px; font-weight: 700; display: block; margin-bottom: 2px; }
+  .mwb-q .mwb-reading { font-size: 11px; font-style: italic; display: block; margin-bottom: 8px; }
+  .mwb-q .mwb-songs { font-size: 11px; line-height: 1.6; }
+  .mwb-q .mwb-songs b { font-size: 13px; }
+</style>
+
+<div class="layout">
+  <div class="mwb-q">
+    <span class="mwb-week">{{ week_label }}</span>
+    <span class="mwb-reading">{{ bible_reading }}</span>
+    <div class="mwb-songs">
+      Open: <b>Song {{ opening_song }}</b><br>
+      {% for sec in sections %}{% if sec.concluding.song %}Close: <b>Song {{ sec.concluding.song }}</b>{% endif %}{% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="title_bar">
+  <img class="image" src="/images/plugins/trmnl--render.svg" alt="TRMNL Logo">
+  <span class="title">Life &amp; Ministry</span>
+  <span class="instance">{{ week_label }}</span>
+</div>

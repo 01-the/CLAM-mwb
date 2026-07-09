@@ -1,0 +1,63 @@
+<style>
+  .mwb { font-family: inherit; color: #000; }
+  .mwb-header { display: flex; justify-content: space-between; align-items: baseline;
+    border-bottom: 2px solid #000; padding-bottom: 6px; margin-bottom: 10px; }
+  .mwb-header .mwb-week { font-size: 22px; font-weight: 700; }
+  .mwb-header .mwb-reading { font-size: 14px; font-style: italic; }
+  .mwb-songs { font-size: 12px; margin-bottom: 10px; }
+  .mwb-sections { display: flex; flex-wrap: wrap; gap: 14px; }
+  .mwb-section { flex: 1 1 220px; min-width: 200px; }
+  .mwb-section h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.02em;
+    border-bottom: 1px solid #000; padding-bottom: 3px; margin: 0 0 6px 0; }
+  .mwb-item { display: flex; gap: 8px; margin-bottom: 7px; align-items: flex-start; }
+  .mwb-num { flex: 0 0 auto; width: 16px; height: 16px; border: 1px solid #000; border-radius: 50%;
+    font-size: 10px; text-align: center; line-height: 15px; }
+  .mwb-item-body { flex: 1 1 auto; }
+  .mwb-item-title { font-size: 13px; font-weight: 600; line-height: 1.25; }
+  .mwb-item-time { font-size: 11px; font-weight: 400; }
+  .mwb-item-detail { font-size: 11px; line-height: 1.2; margin-top: 1px; }
+  .mwb-song-line { font-size: 12px; font-weight: 600; margin: 4px 0 6px 0; }
+  .mwb-concluding { font-size: 11px; margin-top: 6px; border-top: 1px dashed #000; padding-top: 4px; }
+</style>
+
+<div class="layout">
+  <div class="mwb">
+    <div class="mwb-header">
+      <span class="mwb-week">{{ week_label }}</span>
+      <span class="mwb-reading">{{ bible_reading }}</span>
+    </div>
+    <div class="mwb-songs">
+      Opening: Song {{ opening_song }} and Prayer{% if opening_time %} ({{ opening_time }}){% endif %}
+    </div>
+
+    <div class="mwb-sections">
+      {% for sec in sections %}
+        <div class="mwb-section">
+          <h3>{{ sec.section }}</h3>
+          {% if sec.song %}<div class="mwb-song-line">Song {{ sec.song }}</div>{% endif %}
+          {% for item in sec.items %}
+            <div class="mwb-item">
+              <div class="mwb-num">{{ item.num }}</div>
+              <div class="mwb-item-body">
+                <div class="mwb-item-title">{{ item.title }}{% if item.time %} <span class="mwb-item-time">({{ item.time }})</span>{% endif %}</div>
+                {% if item.detail %}<div class="mwb-item-detail">{{ item.detail }}</div>{% endif %}
+              </div>
+            </div>
+          {% endfor %}
+          {% if sec.concluding %}
+            <div class="mwb-concluding">
+              Concluding Comments{% if sec.concluding.time %} ({{ sec.concluding.time }}){% endif %}
+              {% if sec.concluding.song %} | Song {{ sec.concluding.song }} and Prayer{% endif %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="title_bar">
+  <img class="image" src="/images/plugins/trmnl--render.svg" alt="TRMNL Logo">
+  <span class="title">Life &amp; Ministry Meeting</span>
+  <span class="instance">{{ week_label }}</span>
+</div>
