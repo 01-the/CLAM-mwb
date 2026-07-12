@@ -1,7 +1,7 @@
 {
-  "week_label": "JULY 6-12",
-  "bible_reading": "Jeremiah 13-15",
-  "opening_song": "123",
+  "week_label": "JULY 13-19",
+  "bible_reading": "Jeremiah 16-17",
+  "opening_song": "34",
   "opening_time": "1 min.",
   "sections": [
     {
@@ -10,21 +10,21 @@
       "items": [
         {
           "num": 1,
-          "title": "Jehovah Deserves Our Obedience",
+          "title": "It Matters Whom We Trust",
           "time": "10 min.",
-          "detail": "Although Jeremiah may have been puzzled by Jehovah’s directions, he made a great effort to obey…"
+          "detail": "Those who put their trust in mere humans displease Jehovah (Isa 30:1, 2; Jer 17:5)"
         },
         {
           "num": 2,
           "title": "Spiritual Gems",
           "time": "10 min.",
-          "detail": "Jer 15:16, 17​—How can we imitate Jeremiah and fight discouragement? (w07 3/15 10 ¶3) Your answer"
+          "detail": "Jer 17:7​—Why does trusting in Jehovah include trusting his human representatives? (w22.02 4 ¶7-8)…"
         },
         {
           "num": 3,
           "title": "Bible Reading",
           "time": "4 min.",
-          "detail": "Jer 13:1-14 (th study 2)"
+          "detail": "Jer 17:5-18 (th study 5)"
         }
       ],
       "concluding": null
@@ -37,30 +37,30 @@
           "num": 4,
           "title": "Starting a Conversation",
           "time": "3 min.",
-          "detail": "HOUSE TO HOUSE. Use a tract to start a conversation. (lmd lesson 1 point 5)"
+          "detail": "HOUSE TO HOUSE. Feature a video from the Teaching Toolbox. (lmd lesson 5 point 5)"
         },
         {
           "num": 5,
           "title": "Following Up",
           "time": "4 min.",
-          "detail": "INFORMAL WITNESSING. Share an article from jw.org on the subject of your previous conversation…"
+          "detail": "HOUSE TO HOUSE. Offer a Bible study. (lmd lesson 7 point 4)"
         },
         {
           "num": 6,
-          "title": "Talk",
+          "title": "Making Disciples",
           "time": "5 min.",
-          "detail": "lmd appendix A point 18​—Theme: Jesus Foretold Events We See Today. (th study 7)"
+          "detail": "lff lesson 19 summary, review, and goal (lmd lesson 11 point 3)"
         }
       ],
       "concluding": null
     },
     {
       "section": "Living as Christians",
-      "song": "49",
+      "song": "54",
       "items": [
         {
           "num": 7,
-          "title": "“To Obey Is Better Than a Sacrifice”",
+          "title": "Youths, Trust God’s Word for Practical Advice",
           "time": "15 min.",
           "detail": "Discussion."
         },
@@ -68,15 +68,15 @@
           "num": 8,
           "title": "Congregation Bible Study",
           "time": "30 min.",
-          "detail": "lfb lessons 100-101"
+          "detail": "lfb lessons 102-103"
         }
       ],
       "concluding": {
         "time": "3 min.",
-        "song": "61"
+        "song": "22"
       }
     }
   ],
-  "generated_at": "2026-07-11T22:32:23+00:00",
-  "source_url": "https://wol.jw.org/en/wol/dt/r1/lp-e/2026/7/12"
+  "generated_at": "2026-07-12T22:33:31+00:00",
+  "source_url": "https://wol.jw.org/en/wol/dt/r1/lp-e/2026/7/13"
 }
