@@ -1,7 +1,7 @@
 {
-  "week_label": "SEPTEMBER 7-13",
-  "bible_reading": "Jeremiah 32-33",
-  "opening_song": "1",
+  "week_label": "SEPTEMBER 14-20",
+  "bible_reading": "Jeremiah 34-35",
+  "opening_song": "161",
   "opening_time": "1 min.",
   "sections": [
     {
@@ -10,21 +10,21 @@
       "items": [
         {
           "num": 1,
-          "title": "Reflecting on Jehovah’s Qualities Builds Faith",
+          "title": "Jehovah Rewards Faithful Obedience",
           "time": "10 min.",
-          "detail": "Jehovah’s power convinces us that he can help us (Jer 32:17; wp19.1 6 ¶1–7 ¶1)"
+          "detail": "Many Jews obeyed Jehovah only when they needed his help (Jer 34:8-11; jr 49-50 ¶13-14)"
         },
         {
           "num": 2,
           "title": "Spiritual Gems",
           "time": "10 min.",
-          "detail": "Jer 33:23, 24​—Who are the “two families” spoken of here? (w07 3/15 11 ¶4) Your answer"
+          "detail": "Jer 34:7​—What archaeological evidence supports the events described in this verse? (it…"
         },
         {
           "num": 3,
           "title": "Bible Reading",
           "time": "4 min.",
-          "detail": "Jer 32:6-18 (th study 2)"
+          "detail": "Jer 35:1-14 (th study 5)"
         }
       ],
       "concluding": null
@@ -36,47 +36,59 @@
         {
           "num": 4,
           "title": "Starting a Conversation",
-          "time": "3 min.",
-          "detail": "HOUSE TO HOUSE. Offer a Bible study. (lmd lesson 4 point 3)"
+          "time": "2 min.",
+          "detail": "HOUSE TO HOUSE. Offer a Bible study. (lmd lesson 3 point 3)"
         },
         {
           "num": 5,
           "title": "Starting a Conversation",
-          "time": "4 min.",
-          "detail": "INFORMAL WITNESSING. Offer a Bible study. (lmd lesson 4 point 4)"
+          "time": "2 min.",
+          "detail": "HOUSE TO HOUSE. Offer a Bible study. Feature a video from our Teaching Toolbox. (lmd lesson 3 point…"
         },
         {
           "num": 6,
           "title": "Following Up",
-          "time": "5 min.",
-          "detail": "HOUSE TO HOUSE. Offer a Bible study. (lmd lesson 8 point 3)"
+          "time": "3 min.",
+          "detail": "INFORMAL WITNESSING. Offer a Bible study to a person who previously expressed concern about a…"
+        },
+        {
+          "num": 7,
+          "title": "Making Disciples",
+          "time": "4 min.",
+          "detail": "Discussion with a Bible student. Tell your student about the Bible study campaign. Ask if he knows…"
         }
       ],
       "concluding": null
     },
     {
       "section": "Living as Christians",
-      "song": "128",
+      "song": "121",
       "items": [
         {
-          "num": 7,
-          "title": "Make Your Blows Count During the Campaign",
-          "time": "15 min.",
+          "num": 8,
+          "title": "Self-Control Helps Us to Obey",
+          "time": "6 min.",
           "detail": "Discussion."
         },
         {
-          "num": 8,
+          "num": 9,
+          "title": "Organizational Accomplishments for September",
+          "time": "9 min.",
+          "detail": "Discussion."
+        },
+        {
+          "num": 10,
           "title": "Congregation Bible Study",
           "time": "30 min.",
-          "detail": "wcg chap. 7"
+          "detail": "wcg chap. 8"
         }
       ],
       "concluding": {
         "time": "3 min.",
-        "song": "143"
+        "song": "28"
       }
     }
   ],
-  "generated_at": "2026-09-12T21:49:36+00:00",
-  "source_url": "https://wol.jw.org/en/wol/dt/r1/lp-e/2026/9/13"
+  "generated_at": "2026-09-13T21:56:50+00:00",
+  "source_url": "https://wol.jw.org/en/wol/dt/r1/lp-e/2026/9/14"
 }
