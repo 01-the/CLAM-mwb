@@ -1,7 +1,7 @@
 {
-  "week_label": "SEPTEMBER 14-20",
-  "bible_reading": "Jeremiah 34-35",
-  "opening_song": "161",
+  "week_label": "SEPTEMBER 21-27",
+  "bible_reading": "Jeremiah 36-37",
+  "opening_song": "74",
   "opening_time": "1 min.",
   "sections": [
     {
@@ -10,21 +10,21 @@
       "items": [
         {
           "num": 1,
-          "title": "Jehovah Rewards Faithful Obedience",
+          "title": "Jehovah Supports Those Who Support His Kingdom",
           "time": "10 min.",
-          "detail": "Many Jews obeyed Jehovah only when they needed his help (Jer 34:8-11; jr 49-50 ¶13-14)"
+          "detail": "Jeremiah proclaimed an unpopular message during a time of political controversy in Judah (Jer…"
         },
         {
           "num": 2,
           "title": "Spiritual Gems",
           "time": "10 min.",
-          "detail": "Jer 34:7​—What archaeological evidence supports the events described in this verse? (it…"
+          "detail": "Jer 36:30​—How did the prophecy that Jehoiakim would have no successor come true? (it “Jehoiakim”…"
         },
         {
           "num": 3,
           "title": "Bible Reading",
           "time": "4 min.",
-          "detail": "Jer 35:1-14 (th study 5)"
+          "detail": "Jer 36:1-13 (th study 10)"
         }
       ],
       "concluding": null
@@ -36,59 +36,47 @@
         {
           "num": 4,
           "title": "Starting a Conversation",
-          "time": "2 min.",
-          "detail": "HOUSE TO HOUSE. Offer a Bible study. (lmd lesson 3 point 3)"
+          "time": "3 min.",
+          "detail": "PUBLIC WITNESSING. Offer a Bible study to a person of a non-Christian background. (lmd lesson 5…"
         },
         {
           "num": 5,
-          "title": "Starting a Conversation",
-          "time": "2 min.",
-          "detail": "HOUSE TO HOUSE. Offer a Bible study. Feature a video from our Teaching Toolbox. (lmd lesson 3 point…"
+          "title": "Following Up",
+          "time": "4 min.",
+          "detail": "HOUSE TO HOUSE. Offer a Bible study to a person who accepted a tract on your last visit. (lmd…"
         },
         {
           "num": 6,
-          "title": "Following Up",
-          "time": "3 min.",
-          "detail": "INFORMAL WITNESSING. Offer a Bible study to a person who previously expressed concern about a…"
-        },
-        {
-          "num": 7,
-          "title": "Making Disciples",
-          "time": "4 min.",
-          "detail": "Discussion with a Bible student. Tell your student about the Bible study campaign. Ask if he knows…"
+          "title": "What Would You Say?",
+          "time": "6 min.",
+          "detail": "Discussion. HOUSE TO HOUSE. Briefly review lmd lesson 2 point 5. Then ask the audience:"
         }
       ],
       "concluding": null
     },
     {
       "section": "Living as Christians",
-      "song": "121",
+      "song": "142",
       "items": [
         {
+          "num": 7,
+          "title": "Remaining Neutral in Our Hearts",
+          "time": "15 min.",
+          "detail": "Discussion."
+        },
+        {
           "num": 8,
-          "title": "Self-Control Helps Us to Obey",
-          "time": "6 min.",
-          "detail": "Discussion."
-        },
-        {
-          "num": 9,
-          "title": "Organizational Accomplishments for September",
-          "time": "9 min.",
-          "detail": "Discussion."
-        },
-        {
-          "num": 10,
           "title": "Congregation Bible Study",
           "time": "30 min.",
-          "detail": "wcg chap. 8"
+          "detail": "wcg chap. 9"
         }
       ],
       "concluding": {
         "time": "3 min.",
-        "song": "28"
+        "song": "134"
       }
     }
   ],
-  "generated_at": "2026-09-19T21:56:45+00:00",
-  "source_url": "https://wol.jw.org/en/wol/dt/r1/lp-e/2026/9/20"
+  "generated_at": "2026-09-20T22:02:56+00:00",
+  "source_url": "https://wol.jw.org/en/wol/dt/r1/lp-e/2026/9/21"
 }
