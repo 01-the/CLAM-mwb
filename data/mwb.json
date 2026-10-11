@@ -1,7 +1,7 @@
 {
-  "week_label": "OCTOBER 5-11",
-  "bible_reading": "Jeremiah 40-41",
-  "opening_song": "33",
+  "week_label": "OCTOBER 12-18",
+  "bible_reading": "Jeremiah 42-44",
+  "opening_song": "103",
   "opening_time": "1 min.",
   "sections": [
     {
@@ -10,21 +10,21 @@
       "items": [
         {
           "num": 1,
-          "title": "Gaining a Proper Perspective of Jehovah’s Protection",
+          "title": "They Asked, but They Did Not Listen",
           "time": "10 min.",
-          "detail": "Jehovah preserved Jeremiah’s life (Jer 40:2-4; jr 189 ¶16)"
+          "detail": "Before fleeing to Egypt, Johanan and the people asked Jeremiah to pray for guidance on their behalf…"
         },
         {
           "num": 2,
           "title": "Spiritual Gems",
           "time": "10 min.",
-          "detail": "Jer 40:12​—How does this verse confirm that Jehovah gave his people the good land described in…"
+          "detail": "Jer 44:18​—Why could the Israelites not justifiably blame their suffering on the fact that they had…"
         },
         {
           "num": 3,
           "title": "Bible Reading",
           "time": "4 min.",
-          "detail": "Jer 40:1-10 (th study 2)"
+          "detail": "Jer 43:1-13 (th study 11)"
         }
       ],
       "concluding": null
@@ -36,53 +36,47 @@
         {
           "num": 4,
           "title": "Starting a Conversation",
-          "time": "2 min.",
-          "detail": "HOUSE TO HOUSE. (lmd lesson 2 point 3)"
+          "time": "3 min.",
+          "detail": "INFORMAL WITNESSING. (lmd lesson 1 point 5)"
         },
         {
           "num": 5,
-          "title": "Starting a Conversation",
-          "time": "2 min.",
-          "detail": "INFORMAL WITNESSING. (lmd lesson 2 point 5)"
+          "title": "Following Up",
+          "time": "4 min.",
+          "detail": "HOUSE TO HOUSE. Share a truth from appendix A of the Love People brochure. (lmd lesson 7 point 4)"
         },
         {
           "num": 6,
-          "title": "Starting a Conversation",
-          "time": "4 min.",
-          "detail": "PUBLIC WITNESSING. A person is looking at the literature cart. (lmd lesson 5 point 3)"
-        },
-        {
-          "num": 7,
-          "title": "Explaining Your Beliefs",
-          "time": "3 min.",
-          "detail": "Demonstration. ijwbq article 103​—Theme: Who Is Jehovah? (th study 17)"
+          "title": "What Would You Say?",
+          "time": "6 min.",
+          "detail": "Discussion. INFORMAL WITNESSING. Briefly review lmd lesson 2 point 3. Refer to the picture, then…"
         }
       ],
       "concluding": null
     },
     {
       "section": "Living as Christians",
-      "song": "17",
+      "song": "47",
       "items": [
         {
-          "num": 8,
-          "title": "Jehovah Is the Protector of Widows",
+          "num": 7,
+          "title": "Local Needs",
           "time": "15 min.",
-          "detail": "Discussion."
+          "detail": null
         },
         {
-          "num": 9,
+          "num": 8,
           "title": "Congregation Bible Study",
           "time": "30 min.",
-          "detail": "wcg chap. 11"
+          "detail": "wcg chap. 12"
         }
       ],
       "concluding": {
         "time": "3 min.",
-        "song": "38"
+        "song": "129"
       }
     }
   ],
-  "generated_at": "2026-10-10T23:05:45+00:00",
-  "source_url": "https://wol.jw.org/en/wol/dt/r1/lp-e/2026/10/11"
+  "generated_at": "2026-10-11T23:18:50+00:00",
+  "source_url": "https://wol.jw.org/en/wol/dt/r1/lp-e/2026/10/12"
 }
