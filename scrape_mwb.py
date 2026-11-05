@@ -2,34 +2,41 @@
 """
 scrape_mwb.py
 
-Pulls the current week's "Life and Ministry Meeting" schedule from the
-Watchtower ONLINE LIBRARY (wol.jw.org) and turns it into compact JSON
-suitable for a TRMNL polling plugin.
+Pulls the current week's "Life and Ministry Meeting" schedule and turns it
+into compact JSON suitable for a TRMNL polling plugin.
 
-We deliberately only extract *schedule* information: section names,
-part numbers/titles, assigned times, song numbers, and short reference
-tags (e.g. "Jer 13:1-14"). This mirrors exactly what a congregation
-posts on its information board -- not the full study content of each
-part.
+Only *schedule* information is extracted: section names, part numbers and
+titles, assigned times, song numbers, and short reference tags. This mirrors
+what a congregation posts on its information board.
+
+Sources, tried in order:
+  1. wol.jw.org  (date-based weekly page)
+  2. jw.org      (weekly schedule article)
+
+If both fail, the error message includes what the page actually contained,
+so the cause is visible in the GitHub Actions log.
 
 Usage:
-    python scrape_mwb.py                     # this week (system local date)
-    python scrape_mwb.py --date 2026-07-09   # week containing this date
-    python scrape_mwb.py --out data/mwb.json # write to a specific path
+    python scrape_mwb.py                     # this week (Sydney date)
+    python scrape_mwb.py --date 2026-11-05   # week containing this date
+    python scrape_mwb.py --out data/mwb.json
 """
 
 import argparse
 import json
+import os
 import re
 import sys
 import time
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 import requests
-from bs4 import BeautifulSoup, NavigableString
+from bs4 import BeautifulSoup
 
 WOL_BASE = "https://wol.jw.org/en/wol/dt/r1/lp-e"
+JW_BASE = "https://www.jw.org/en/library/jw-meeting-workbook"
+
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -42,17 +49,34 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9",
 }
 
+MONTHS = [
+    "January", "February", "March", "April", "May", "June", "July",
+    "August", "September", "October", "November", "December",
+]
+MONTH_PATTERN = "|".join(MONTHS)
+
+# Workbook issues are bimonthly, named by the month the week STARTS in.
+ISSUE_SLUGS = {
+    1: "january-february", 2: "january-february",
+    3: "march-april", 4: "march-april",
+    5: "may-june", 6: "may-june",
+    7: "july-august", 8: "july-august",
+    9: "september-october", 10: "september-october",
+    11: "november-december", 12: "november-december",
+}
+
 SECTION_KEYWORDS = {
     "treasures from god": "Treasures From God's Word",
     "apply yourself to the field ministry": "Apply Yourself to the Field Ministry",
     "living as christians": "Living as Christians",
 }
 
-MONTH_NAMES = (
-    "january|february|march|april|may|june|july|august|"
-    "september|october|november|december"
+# A week heading looks like "NOVEMBER 2-8" or "OCTOBER 27-NOVEMBER 2".
+WEEK_RANGE_RE = re.compile(
+    rf"^\s*(?:{MONTH_PATTERN})\s+\d{{1,2}}\s*[\u2013\u2014\-]\s*"
+    rf"(?:(?:{MONTH_PATTERN})\s+)?\d{{1,2}}\s*$",
+    re.IGNORECASE,
 )
-WEEK_HEADING_RE = re.compile(MONTH_NAMES, re.IGNORECASE)
 POINT_RE = re.compile(r"^(\d+)\.\s*(.+)$")
 SONG_ONLY_RE = re.compile(r"^song\s+(\d+)$", re.IGNORECASE)
 CONCLUDING_RE = re.compile(r"concluding comments", re.IGNORECASE)
@@ -62,8 +86,35 @@ SONG_INLINE_RE = re.compile(r"song\s+(\d+)", re.IGNORECASE)
 MAX_DETAIL_CHARS = 100
 
 
-def fetch_week_html(target_date: date, attempts: int = 4) -> str:
-    url = f"{WOL_BASE}/{target_date.year}/{target_date.month}/{target_date.day}"
+# ----------------------------------------------------------------- fetching
+
+
+def week_bounds(target_date: date):
+    monday = target_date - timedelta(days=target_date.weekday())
+    return monday, monday + timedelta(days=6)
+
+
+def wol_url(target_date: date) -> str:
+    return f"{WOL_BASE}/{target_date.year}/{target_date.month}/{target_date.day}"
+
+
+def jw_org_url(target_date: date) -> str:
+    monday, sunday = week_bounds(target_date)
+    if monday.month == sunday.month:
+        span = f"{MONTHS[monday.month - 1]}-{monday.day}-{sunday.day}"
+    else:
+        span = (
+            f"{MONTHS[monday.month - 1]}-{monday.day}-"
+            f"{MONTHS[sunday.month - 1]}-{sunday.day}"
+        )
+    issue = f"{ISSUE_SLUGS[monday.month]}-{monday.year}-mwb"
+    return (
+        f"{JW_BASE}/{issue}/"
+        f"Life-and-Ministry-Meeting-Schedule-for-{span}-{monday.year}/"
+    )
+
+
+def fetch_html(url: str, attempts: int = 3) -> str:
     last_exc = None
     for i in range(attempts):
         try:
@@ -83,10 +134,12 @@ def fetch_week_html(target_date: date, attempts: int = 4) -> str:
     raise last_exc
 
 
+# ------------------------------------------------------------------ parsing
+
+
 def clean_text(text: str) -> str:
     text = text.replace("\u00a0", " ")
-    text = re.sub(r"\s+", " ", text).strip()
-    return text
+    return re.sub(r"\s+", " ", text).strip()
 
 
 def truncate(text: str, limit: int = MAX_DETAIL_CHARS) -> str:
@@ -98,170 +151,185 @@ def truncate(text: str, limit: int = MAX_DETAIL_CHARS) -> str:
 
 def is_boilerplate(text: str) -> bool:
     lowered = text.lower()
-    return lowered in ("your answer",) or lowered.startswith(
+    return lowered == "your answer" or lowered.startswith(
         "what spiritual gems from this week"
     )
+
+
+def describe_page(html: str) -> str:
+    """Short summary of what a page contained, for error messages."""
+    soup = BeautifulSoup(html, "lxml")
+    title = clean_text(soup.title.get_text()) if soup.title else "(no title)"
+    heads = [
+        clean_text(h.get_text())[:40]
+        for h in soup.find_all(["h1", "h2", "h3"])
+    ][:8]
+    body = clean_text(soup.get_text(" "))[:160]
+    return f"title={title!r} length={len(html)} headings={heads} text={body!r}"
+
+
+def find_week_heading(nodes):
+    """Index of the week-range heading. Prefers h1, accepts h2/h3."""
+    for wanted in (("h1",), ("h2", "h3")):
+        for i, node in enumerate(nodes):
+            if node.name in wanted and WEEK_RANGE_RE.match(
+                clean_text(node.get_text())
+            ):
+                return i
+    return None
 
 
 def parse_week(html: str) -> dict:
     soup = BeautifulSoup(html, "lxml")
 
-    # Only walk semantic content tags, in document order. This is
-    # resilient to wrapper <div> class names changing, since it only
-    # depends on heading/paragraph tag structure.
+    # Walk only semantic tags in document order, so the parser does not
+    # depend on wrapper <div> class names.
     nodes = soup.find_all(["h1", "h2", "h3", "p", "li"])
 
-    # Locate the week heading (h1 containing a month name). The dt page
-    # can render other h1s (rare), so prefer the first match.
-    start_idx = None
-    for i, node in enumerate(nodes):
-        if node.name == "h1" and WEEK_HEADING_RE.search(node.get_text()):
-            start_idx = i
-            break
+    start_idx = find_week_heading(nodes)
     if start_idx is None:
-        raise RuntimeError("Could not locate the week heading (h1) on the page")
-
-    week_label = clean_text(nodes[start_idx].get_text())
+        raise RuntimeError(
+            "Could not locate the week heading. " + describe_page(html)
+        )
 
     result = {
-        "week_label": week_label,
+        "week_label": clean_text(nodes[start_idx].get_text()).title(),
         "bible_reading": None,
         "opening_song": None,
         "opening_time": None,
         "sections": [],
     }
 
+    sections_by_name = {}
     current_section = None
     current_point = None
-    header_phase = True  # before the first recognized section heading
+    header_phase = True  # before the first recognised section heading
 
-    for node in nodes[start_idx + 1 :]:
+    for node in nodes[start_idx + 1:]:
         text = clean_text(node.get_text())
         if not text:
             continue
 
         if node.name == "h1":
-            break  # next week's block (shouldn't normally happen)
+            break  # next block
 
         if node.name == "h2":
             key = text.lower()
-            matched_section = None
-            for kw, label in SECTION_KEYWORDS.items():
-                if kw in key:
-                    matched_section = label
-                    break
-            if matched_section:
+            matched = next(
+                (label for kw, label in SECTION_KEYWORDS.items() if kw in key),
+                None,
+            )
+            if matched:
                 header_phase = False
-                current_section = {
-                    "section": matched_section,
-                    "song": None,
-                    "items": [],
-                    "concluding": None,
-                }
-                result["sections"].append(current_section)
+                # Some pages repeat a section heading before later parts;
+                # reuse the existing section instead of duplicating it.
+                if matched not in sections_by_name:
+                    sections_by_name[matched] = {
+                        "section": matched,
+                        "song": None,
+                        "items": [],
+                        "concluding": None,
+                    }
+                    result["sections"].append(sections_by_name[matched])
+                current_section = sections_by_name[matched]
                 current_point = None
                 continue
-            elif header_phase and result["bible_reading"] is None:
-                # e.g. "JEREMIAH 13-15"
+            if header_phase and result["bible_reading"] is None:
                 result["bible_reading"] = text.title()
-                continue
-            # unrecognized h2, ignore
             continue
 
         if node.name == "h3":
             if header_phase:
-                # Opening song / prayer heading
-                song_match = SONG_INLINE_RE.search(text)
-                time_match = TIME_RE.search(text) or re.search(
-                    r"\((\d+)\s*min", text
-                )
-                if song_match:
-                    result["opening_song"] = song_match.group(1)
-                if time_match:
-                    result["opening_time"] = f"{time_match.group(1)} min."
+                song = SONG_INLINE_RE.search(text)
+                mins = re.search(r"\((\d+)\s*min", text)
+                if song:
+                    result["opening_song"] = song.group(1)
+                if mins:
+                    result["opening_time"] = f"{mins.group(1)} min."
                 continue
 
             if current_section is None:
                 continue
 
             if CONCLUDING_RE.search(text):
-                song_match = SONG_INLINE_RE.search(text)
-                time_match = re.search(r"\((\d+)\s*min", text)
+                song = SONG_INLINE_RE.search(text)
+                mins = re.search(r"\((\d+)\s*min", text)
                 current_section["concluding"] = {
-                    "time": f"{time_match.group(1)} min." if time_match else None,
-                    "song": song_match.group(1) if song_match else None,
+                    "time": f"{mins.group(1)} min." if mins else None,
+                    "song": song.group(1) if song else None,
                 }
                 current_point = None
                 continue
 
-            point_match = POINT_RE.match(text)
-            if point_match:
+            point = POINT_RE.match(text)
+            if point:
                 current_point = {
-                    "num": int(point_match.group(1)),
-                    "title": clean_text(point_match.group(2)),
+                    "num": int(point.group(1)),
+                    "title": clean_text(point.group(2)),
                     "time": None,
                     "detail": None,
                 }
                 current_section["items"].append(current_point)
                 continue
 
-            song_match = SONG_ONLY_RE.match(text)
-            if song_match:
-                current_section["song"] = song_match.group(1)
+            song_only = SONG_ONLY_RE.match(text)
+            if song_only:
+                current_section["song"] = song_only.group(1)
                 current_point = None
-                continue
-
-            # Unrecognized h3 inside a section: ignore
             continue
 
         if node.name in ("p", "li"):
-            if header_phase or current_point is None:
-                continue
-            if is_boilerplate(text):
+            if header_phase or current_point is None or is_boilerplate(text):
                 continue
 
             if current_point["time"] is None:
-                time_match = TIME_RE.match(text)
-                if time_match:
-                    current_point["time"] = f"{time_match.group(1)} min."
+                m = TIME_RE.match(text)
+                if m:
+                    current_point["time"] = f"{m.group(1)} min."
                     remainder = clean_text(TIME_RE.sub("", text, count=1))
                     if remainder and not is_boilerplate(remainder):
                         current_point["detail"] = truncate(remainder)
-                    continue
-                # No duration found yet on a plain paragraph; treat as
-                # detail candidate only if we still need one.
-                if current_point["detail"] is None:
+                elif current_point["detail"] is None:
                     current_point["detail"] = truncate(text)
                 continue
 
             if current_point["detail"] is None:
                 current_point["detail"] = truncate(text)
-                continue
-            # Already have time + detail for this point; skip the rest
-            # of its body content to keep the payload glanceable.
-            continue
+            # Otherwise skip the rest of the body to keep the payload short.
 
     return result
 
 
+# --------------------------------------------------------------------- main
+
+
+def get_week_data(target_date: date) -> dict:
+    sources = [("wol.jw.org", wol_url(target_date)), ("jw.org", jw_org_url(target_date))]
+    errors = []
+    for label, url in sources:
+        try:
+            html = fetch_html(url)
+            data = parse_week(html)
+            if not data["sections"]:
+                raise RuntimeError("page parsed but no sections found")
+            data["source_url"] = url
+            return data
+        except Exception as exc:  # noqa: BLE001
+            msg = f"[{label}] {exc}"
+            errors.append(msg)
+            print(f"Source failed: {msg}", file=sys.stderr)
+    raise RuntimeError(" || ".join(errors))
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--date",
-        help="Date (YYYY-MM-DD) inside the target week. Defaults to today.",
-    )
+    parser.add_argument("--date", help="Date (YYYY-MM-DD) inside the target week.")
     parser.add_argument(
         "--tz",
         default="Australia/Sydney",
-        help="IANA timezone used to determine 'today' (default: Australia/Sydney). "
-        "Matters because CI runners default to UTC, which can be a different "
-        "calendar day than Sydney.",
+        help="Timezone used to decide what 'today' is (default: Australia/Sydney).",
     )
-    parser.add_argument(
-        "--out",
-        default="data/mwb.json",
-        help="Output JSON path (default: data/mwb.json)",
-    )
+    parser.add_argument("--out", default="data/mwb.json")
     args = parser.parse_args()
 
     if args.date:
@@ -269,20 +337,14 @@ def main():
     else:
         target_date = datetime.now(ZoneInfo(args.tz)).date()
 
-    html = fetch_week_html(target_date)
-    data = parse_week(html)
+    data = get_week_data(target_date)
     data["generated_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
-    data["source_url"] = (
-        f"{WOL_BASE}/{target_date.year}/{target_date.month}/{target_date.day}"
-    )
-
-    import os
 
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print(f"Wrote {args.out}")
+    print(f"Wrote {args.out} (source: {data['source_url']})")
     print(json.dumps(data, ensure_ascii=False, indent=2)[:2000])
 
 
