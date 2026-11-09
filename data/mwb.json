@@ -1,7 +1,7 @@
 {
-  "week_label": "November 2-8",
-  "bible_reading": "Jeremiah 49-50",
-  "opening_song": "1",
+  "week_label": "November 9-15",
+  "bible_reading": "Jeremiah 51-52",
+  "opening_song": "98",
   "opening_time": "1 min.",
   "sections": [
     {
@@ -10,21 +10,21 @@
       "items": [
         {
           "num": 1,
-          "title": "Help Others Benefit From Jehovah’s Mercy",
+          "title": "Learn From the Warning Example of Zedekiah",
           "time": "10 min.",
-          "detail": "Jehovah rightly condemned Babylon for her great sins and arrogant attitude (Jer 50:14, 29, 31; it…"
+          "detail": "Zedekiah did not stand up for what is right (Jer 52:1, 2; jr 29)"
         },
         {
           "num": 2,
           "title": "Spiritual Gems",
           "time": "10 min.",
-          "detail": "Jer 50:24​—In what way did Jehovah catch Babylon in a “snare”? (it “Trap” ¶3) Your answer"
+          "detail": "Jer 51:6, 7, 36​—How does this warning parallel a warning being given today? (jr 165 ¶21; 167 ¶25)…"
         },
         {
           "num": 3,
           "title": "Bible Reading",
           "time": "4 min.",
-          "detail": "Jer 50:24-40 (th study 11)"
+          "detail": "Jer 52:6-20 (th study 5)"
         }
       ],
       "concluding": null
@@ -37,46 +37,46 @@
           "num": 4,
           "title": "Starting a Conversation",
           "time": "3 min.",
-          "detail": "HOUSE TO HOUSE. Share a Bible truth, such as one from appendix A of the Love People brochure. (lmd…"
+          "detail": "HOUSE TO HOUSE. Use the direct approach to offer a Bible study. (lmd lesson 3 point 3)"
         },
         {
           "num": 5,
-          "title": "Following Up",
+          "title": "Starting a Conversation",
           "time": "4 min.",
-          "detail": "HOUSE TO HOUSE. The person expresses interest in a subject different from the one you returned to…"
+          "detail": "HOUSE TO HOUSE. A householder objects to our belief that Jesus is God’s Son. (lmd lesson 3 point 4)"
         },
         {
           "num": 6,
-          "title": "Making Disciples",
+          "title": "Talk",
           "time": "5 min.",
-          "detail": "lff lesson 20 point 4 (lmd lesson 11 point 4)"
+          "detail": "lmd appendix A point 21​—Theme: God’s Kingdom Is a Real Government in Heaven. (th study 7)"
         }
       ],
       "concluding": null
     },
     {
       "section": "Living as Christians",
-      "song": "44",
+      "song": "10",
       "items": [
         {
           "num": 7,
-          "title": "Never Forget What Jehovah Remembers",
+          "title": "Our Donations Glorify God’s Beautiful Name",
           "time": "15 min.",
-          "detail": "Discussion."
+          "detail": "Discussion by an elder."
         },
         {
           "num": 8,
           "title": "Congregation Bible Study",
           "time": "30 min.",
-          "detail": "wcg chap. 15"
+          "detail": "wcg chap. 16"
         }
       ],
       "concluding": {
         "time": "3 min.",
-        "song": "33"
+        "song": "150"
       }
     }
   ],
-  "source_url": "https://www.jw.org/en/library/jw-meeting-workbook/november-december-2026-mwb/Life-and-Ministry-Meeting-Schedule-for-November-2-8-2026/",
-  "generated_at": "2026-11-05T02:57:30+00:00"
+  "source_url": "https://www.jw.org/en/library/jw-meeting-workbook/november-december-2026-mwb/Life-and-Ministry-Meeting-Schedule-for-November-9-15-2026/",
+  "generated_at": "2026-11-09T12:50:58+00:00"
 }
