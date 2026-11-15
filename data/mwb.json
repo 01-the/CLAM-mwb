@@ -1,7 +1,7 @@
 {
-  "week_label": "November 9-15",
-  "bible_reading": "Jeremiah 51-52",
-  "opening_song": "98",
+  "week_label": "November 16-22",
+  "bible_reading": "Lamentations 1-2",
+  "opening_song": "28",
   "opening_time": "1 min.",
   "sections": [
     {
@@ -10,21 +10,21 @@
       "items": [
         {
           "num": 1,
-          "title": "Learn From the Warning Example of Zedekiah",
+          "title": "An Understandable Response to a Terrible Loss",
           "time": "10 min.",
-          "detail": "Zedekiah did not stand up for what is right (Jer 52:1, 2; jr 29)"
+          "detail": "[Play the VIDEO Introduction to Lamentations.]"
         },
         {
           "num": 2,
           "title": "Spiritual Gems",
           "time": "10 min.",
-          "detail": "Jer 51:6, 7, 36​—How does this warning parallel a warning being given today? (jr 165 ¶21; 167 ¶25)…"
+          "detail": "La 2:1​—How was the beauty of Israel thrown down from heaven to earth? (w07 6/1 9 ¶1) Your answer"
         },
         {
           "num": 3,
           "title": "Bible Reading",
           "time": "4 min.",
-          "detail": "Jer 52:6-20 (th study 5)"
+          "detail": "La 1:8-18 (th study 10)"
         }
       ],
       "concluding": null
@@ -37,46 +37,46 @@
           "num": 4,
           "title": "Starting a Conversation",
           "time": "3 min.",
-          "detail": "HOUSE TO HOUSE. Use the direct approach to offer a Bible study. (lmd lesson 3 point 3)"
+          "detail": "INFORMAL WITNESSING. Initiate a friendly conversation that ends before you can give a witness. (lmd…"
         },
         {
           "num": 5,
-          "title": "Starting a Conversation",
+          "title": "Following Up",
           "time": "4 min.",
-          "detail": "HOUSE TO HOUSE. A householder objects to our belief that Jesus is God’s Son. (lmd lesson 3 point 4)"
+          "detail": "PUBLIC WITNESSING. Feature a video from the Teaching Toolbox, and offer a Bible study. (lmd lesson…"
         },
         {
           "num": 6,
-          "title": "Talk",
+          "title": "What Would You Say?",
           "time": "5 min.",
-          "detail": "lmd appendix A point 21​—Theme: God’s Kingdom Is a Real Government in Heaven. (th study 7)"
+          "detail": "Discussion. HOUSE TO HOUSE. Briefly review lmd lesson 1 point 4b. Refer to the picture, then ask…"
         }
       ],
       "concluding": null
     },
     {
       "section": "Living as Christians",
-      "song": "10",
+      "song": "90",
       "items": [
         {
           "num": 7,
-          "title": "Our Donations Glorify God’s Beautiful Name",
+          "title": "Do Not Forget Our Inactive Brothers and Sisters",
           "time": "15 min.",
-          "detail": "Discussion by an elder."
+          "detail": "Discussion."
         },
         {
           "num": 8,
           "title": "Congregation Bible Study",
           "time": "30 min.",
-          "detail": "wcg chap. 16"
+          "detail": "wcg chap. 17"
         }
       ],
       "concluding": {
         "time": "3 min.",
-        "song": "150"
+        "song": "75"
       }
     }
   ],
-  "source_url": "https://www.jw.org/en/library/jw-meeting-workbook/november-december-2026-mwb/Life-and-Ministry-Meeting-Schedule-for-November-9-15-2026/",
-  "generated_at": "2026-11-15T07:10:02+00:00"
+  "source_url": "https://www.jw.org/en/library/jw-meeting-workbook/november-december-2026-mwb/Life-and-Ministry-Meeting-Schedule-for-November-16-22-2026/",
+  "generated_at": "2026-11-15T13:10:02+00:00"
 }
