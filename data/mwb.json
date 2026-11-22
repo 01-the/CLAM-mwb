@@ -1,7 +1,7 @@
 {
-  "week_label": "November 16-22",
-  "bible_reading": "Lamentations 1-2",
-  "opening_song": "28",
+  "week_label": "November 23-29",
+  "bible_reading": "Lamentations 3-5",
+  "opening_song": "158",
   "opening_time": "1 min.",
   "sections": [
     {
@@ -10,21 +10,21 @@
       "items": [
         {
           "num": 1,
-          "title": "An Understandable Response to a Terrible Loss",
+          "title": "Do Not Give Out When Experiencing Trials",
           "time": "10 min.",
-          "detail": "[Play the VIDEO Introduction to Lamentations.]"
+          "detail": "Appreciate what Jehovah has done for you (La 3:22; w24.01 30 ¶16)"
         },
         {
           "num": 2,
           "title": "Spiritual Gems",
           "time": "10 min.",
-          "detail": "La 2:1​—How was the beauty of Israel thrown down from heaven to earth? (w07 6/1 9 ¶1) Your answer"
+          "detail": "La 3:27​—What good can come from enduring hardships during youth? (w07 6/1 11 ¶5) Your answer"
         },
         {
           "num": 3,
           "title": "Bible Reading",
           "time": "4 min.",
-          "detail": "La 1:8-18 (th study 10)"
+          "detail": "La 3:19-42 (th study 12)"
         }
       ],
       "concluding": null
@@ -37,30 +37,30 @@
           "num": 4,
           "title": "Starting a Conversation",
           "time": "3 min.",
-          "detail": "INFORMAL WITNESSING. Initiate a friendly conversation that ends before you can give a witness. (lmd…"
+          "detail": "HOUSE TO HOUSE. Share a Bible truth, such as one from appendix A of the Love People brochure. (lmd…"
         },
         {
           "num": 5,
-          "title": "Following Up",
+          "title": "Starting a Conversation",
           "time": "4 min.",
-          "detail": "PUBLIC WITNESSING. Feature a video from the Teaching Toolbox, and offer a Bible study. (lmd lesson…"
+          "detail": "INFORMAL WITNESSING. Offer a tract. (lmd lesson 4 point 3)"
         },
         {
           "num": 6,
-          "title": "What Would You Say?",
+          "title": "Talk",
           "time": "5 min.",
-          "detail": "Discussion. HOUSE TO HOUSE. Briefly review lmd lesson 1 point 4b. Refer to the picture, then ask…"
+          "detail": "w25.12 26-30​—Theme: Older Ones—​You Are an Asset to the Congregation. (th study 16)"
         }
       ],
       "concluding": null
     },
     {
       "section": "Living as Christians",
-      "song": "90",
+      "song": "109",
       "items": [
         {
           "num": 7,
-          "title": "Do Not Forget Our Inactive Brothers and Sisters",
+          "title": "Help Caregivers Not to Give Out",
           "time": "15 min.",
           "detail": "Discussion."
         },
@@ -68,15 +68,15 @@
           "num": 8,
           "title": "Congregation Bible Study",
           "time": "30 min.",
-          "detail": "wcg chap. 17"
+          "detail": "wcg chap. 18"
         }
       ],
       "concluding": {
         "time": "3 min.",
-        "song": "75"
+        "song": "74"
       }
     }
   ],
-  "source_url": "https://www.jw.org/en/library/jw-meeting-workbook/november-december-2026-mwb/Life-and-Ministry-Meeting-Schedule-for-November-16-22-2026/",
-  "generated_at": "2026-11-22T07:10:03+00:00"
+  "source_url": "https://www.jw.org/en/library/jw-meeting-workbook/november-december-2026-mwb/Life-and-Ministry-Meeting-Schedule-for-November-23-29-2026/",
+  "generated_at": "2026-11-22T13:10:02+00:00"
 }
